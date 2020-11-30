@@ -1,0 +1,224 @@
+@import "../sass/utils/mixins";
+@import "../sass/utils/%placeholders";
+@import "../sass/utils/fonctions";
+@import "../sass/utils/mixins";
+@import "../sass/utils/variables";
+@import "../sass/base/police";
+@import "../sass/components/boutons";
+@import "../sass/layouts/layouts";
+@import "../sass/pages/pages";
+@import "../sass/themes/themes";
+@import "../sass/vendors/vendors";
+
+
+
+
+
+/**********BANNIERE***************************/
+
+.banniere {
+    @extend %banniere;
+}
+
+.fas {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+     &:hover {
+         color: #fff;
+     }
+}
+
+
+/**********LISTE VUE********************************/
+table {
+    width: 100%;
+    
+
+        @media screen and (min-width: 742px) { 
+
+   
+        }
+}
+
+
+main {
+    margin         : 0px 5px 0px 5px ;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+}
+
+
+
+tr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-weight: bolder;
+    box-shadow: black 1px 1px 10px 1px ;
+    border-radius: 10px;
+    margin: 10px 0px 10px 0px ;
+
+        @media screen and (min-width: 742px) { 
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+               
+        }
+
+}
+
+
+.imageUrl {   
+    width: 100%;  
+    border-radius: 10px 10px 0px 0px;
+    
+
+        @media screen and (min-width: 742px){
+            width: 250px; 
+            border-radius: 10px 10px 10px 10px;
+            margin: 5px 0px 5px 5px; 
+        }
+}
+
+
+.name {
+    text-align: center;
+    margin: 5px 5px 0px 5px;
+    font-weight: bolder;
+    padding: 5px 5px 5px 5px;
+    font-size: 2.5rem;
+
+        @media screen and (min-width: 742px){ 
+            font-size: 2.0rem;
+        
+        }
+}
+
+
+.description {
+    text-align: center;
+    padding: 5px 5px 5px 5px;
+
+        @media screen and (min-width: 742px){ 
+            padding: 5px 20px 5px 20px;
+      
+        }
+
+}
+
+
+.price {
+    text-align: center;
+    padding: 5px 5px 5px 5px;
+    font-size: 2.0rem;
+
+        @media screen and (min-width: 742px){ 
+            font-size: 1.5rem;
+         
+        }
+}
+
+
+
+/**section__box__footer******************************************************/
+
+.section__box__footer {               
+    width           : 100%;
+    padding-top     : 20px;
+    padding-bottom  : 30px;
+    background-color: $bg-fonce;
+    color           : #fff;
+
+        h2 {
+            color       : #fff;
+            font-family : 'shrikhandregular';
+            padding-left: 10px;
+            font-weight : lighter;
+            font-size   : 1.4rem;
+            margin-bottom: 10px;
+            
+        }
+
+        p {
+            color       : #fff;
+            padding-left: 10px; 
+            font-size   : 0.7rem; 
+            margin-bottom: 4px; 
+        }
+
+        .box__footer__item__1::before {
+            font-family : "Font Awesome 5 Free"; 
+            font-weight : 900; 
+            font-size   : 0.5rem;
+            content     : "\f07a";
+            margin-right: 10px;
+            
+          }
+
+        .box__footer__item__2::before {
+            font-family : "Font Awesome 5 Free"; 
+            font-weight : 900; 
+            font-size   : 0.5rem;
+            content     : "\f0e3";
+            margin-right: 6px;
+          }  
+
+
+        .box__footer__item__3::before {
+        font-family : "Font Awesome 5 Free"; 
+        font-weight : 900; 
+        font-size   : 0.5rem;
+        content     : "\f502";
+        margin-right: 6px;
+        }
+        
+        .box__footer__item__4::before {
+            font-family : "Font Awesome 5 Free"; 
+            font-weight : 900; 
+            font-size   : 0.5rem;
+            content     : "\f573";
+            margin-right: 6px;
+            }  
+
+        
+}
+
+@media screen and (min-width: 768px) {
+
+    .section__box__footer {
+        display: flex;
+        justify-content: center; 
+    
+        h2 {
+                font-size: 1.7rem;
+            }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        .box__footer__item__1::before,
+        .box__footer__item__2::before {
+            font-size   : 1.0rem;
+        } 
+
+    }
+
+
+    .box__footer {
+        width: 90%;        
+        justify-content: space-between;
+        display: flex;
+        text-align: center;     
+    }
+
+}
