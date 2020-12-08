@@ -19,8 +19,8 @@
 }
 
 /**Variable de Couleur**/
-.bouton {
-  width: 150px;
+.bouton, button {
+  width: 200px;
   height: auto;
   margin-left: auto;
   margin-right: auto;
@@ -39,18 +39,21 @@
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
 }
 @media screen and (min-width: 742px) and (max-width: 991px) {
-  .bouton {
+  .bouton, button {
     width: 100px;
     margin-top: 10px;
     margin-right: 10px;
   }
 }
 @media screen and (min-width: 991px) {
-  .bouton {
+  .bouton, button {
     width: 150px;
     margin-top: 10px;
     margin-right: 10px;
   }
+}
+.bouton .p, button .p {
+  background-color: red;
 }
 
 .bouton:hover {
@@ -59,6 +62,13 @@
 
 .bouton:active {
   box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /**Page***************************************/
@@ -170,6 +180,15 @@ button:focus {
   color: #fff;
 }
 
+.fa-shopping-basket {
+  position: absolute;
+  top: 120px;
+  left: 250px;
+}
+.fa-shopping-basket:hover {
+  color: #fff;
+}
+
 /**********LISTE VUE********************************/
 table {
   width: 100%;
@@ -232,6 +251,7 @@ tr {
 .description {
   text-align: center;
   padding: 5px 5px 5px 5px;
+  font-size: 1.4rem;
 }
 @media screen and (min-width: 742px) {
   .description {
@@ -248,6 +268,54 @@ tr {
   .price {
     font-size: 1.5rem;
   }
+}
+
+.color {
+  text-align: center;
+  padding: 5px 5px 5px 5px;
+  font-size: 1.5rem;
+}
+@media screen and (min-width: 742px) {
+  .color {
+    font-size: 1.5rem;
+  }
+}
+
+.qte {
+  text-align: center;
+  padding: 5px 5px 5px 5px;
+  font-size: 1.5rem;
+}
+@media screen and (min-width: 742px) {
+  .qte {
+    font-size: 1.5rem;
+  }
+}
+
+.choix {
+  width: 65%;
+  text-align: center;
+  padding: 5px 5px 5px 5px;
+  font-size: 1rem;
+  margin-left: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: solid 1px #dc5100;
+}
+@media screen and (min-width: 742px) {
+  .choix {
+    font-size: 1.5rem;
+  }
+}
+
+.page_article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0px 10px 0px;
 }
 
 /**section__box__footer******************************************************/
@@ -323,6 +391,113 @@ tr {
     display: flex;
     text-align: center;
   }
+}
+/****************************PAGE PANIER RESUME******************************/
+ul {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5px 0px 5px 0px;
+}
+
+.image_panier {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px 10px 10px 10px;
+  margin-right: 10px;
+}
+@media screen and (min-width: 742px) {
+  .image_panier {
+    width: 250px;
+    border-radius: 10px 10px 10px 10px;
+    margin: 5px 0px 5px 5px;
+  }
+}
+
+.total_commande {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  border-radius: 0px 0px 5px 5px;
+}
+
+#montant_total {
+  font-weight: bolder;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/****************************PAGE PANIER FORMULAIRE******************************/
+.form_commande {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.form_commande input {
+  border: solid #dc5100;
+  margin: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
+  border-radius: 5px;
+}
+
+.resume {
+  width: 100%;
+  border: solid black 1px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.info_commande,
+.panier {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+input:focus {
+  background-color: #ccc;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+.premon_nom,
+.adresse {
+  width: 100%;
+  border: solid black 1px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.premon_nom p,
+.adresse p {
+  font-weight: bolder;
+  margin: 10px 0px 10px 10px;
+}
+
+.taille_imput_num {
+  width: 50px;
+}
+
+.taille_imput_petit {
+  width: 140px;
+}
+
+.taille_imput_grand {
+  width: 230px;
+}
+
+.taille_imput_max {
+  width: 320px;
+}
+
+.info_adresse {
+  display: flex;
+}
+
+small {
+  margin-left: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

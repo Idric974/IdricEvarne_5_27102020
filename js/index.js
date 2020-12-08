@@ -22,7 +22,7 @@ fetch ('http://localhost:3000/api/teddies')
 
                     </tr>
 
-                `,
+                `
                 
                 //⇓⇓ Ecrit les 'tr'  dans HTML ⇓⇓.
                 document.querySelector("tbody").appendChild(listeVue);
