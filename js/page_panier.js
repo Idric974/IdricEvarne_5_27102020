@@ -1,38 +1,118 @@
-let oldItems = localStorage.getItem('panier');
+//⇓⇓ Recuper les informations dans le localStorage⇓⇓
+let oldItems = localStorage.getItem("panier");
 
+//⇓⇓ Format les information en JSON⇓⇓
 let recupPanier = JSON.parse(localStorage.getItem("panier"));
 
-console.log(recupPanier)
+//⇓⇓ Affiche les information en JSON ⇓⇓
+console.log(recupPanier);
 
+const _ids = [];
+
+//⇓⇓ Condition qui affiche une message si le panier est vide ⇓⇓
+if (recupPanier == null) {
+  let infoPanier = "Votre panier est vide 😲";
+  document.getElementById("montant_total").innerText = infoPanier;
+}
+
+//⇓⇓ Initialise une variable pour le calcule du montant du panier⇓⇓
 montantTotal = 0;
 
-recupPanier.forEach(panier => {
-    console.log(panier)
+//⇓⇓ Recuper les informations dans le panier ⇓⇓
+recupPanier.forEach((panier) => {
+  console.log(panier);
 
-    montantTotal += panier.totalLigne;
+  _ids.push(panier._id);
 
-    //⇓⇓ Création élément 'tr' pour chaque index ⇓⇓.
-    let listePanier = document.createElement('ul');
+  //⇓⇓ Calcule le montant total de la commande ⇓⇓.
+  montantTotal += panier.totalLigne;
 
+  //⇓⇓ Création élément 'ul' pour chaque index ⇓⇓.
+  let listePanier = document.createElement("ul");
 
-    //⇓⇓ Met dans les ‘tr’ les infos de l’API ⇓⇓.
-    listePanier.innerHTML = `
-                 
-        <ul>
-            <td ><img src=${panier.image}  class="image_panier"></td> 
-            <td class="name_panier">Votre ${panier.name}</td>
-            <td class="color_panier">de couleur ${panier.color}</td>
-            <td class="price_panier">à ${panier.price}€</td>
-            <td class="qte_panier">Qté:${panier.qte}</td>
-            <td class="total_panier"> pour un total ${panier.totalLigne}€.</td>
-        </ul>
+  //⇓⇓ Met dans les ‘tr’ les infos de l’API ⇓⇓.
+  listePanier.innerHTML = `
+                    
+            <ul>
+                <li><img src=${panier.image}  class="image_panier" ></li> 
+                <li class="description_panier">
+                Votre ${panier.name} 
+                de couleur ${panier.color}
+                à ${panier.price}€
+                Qté:${panier.qte}
+                pour un total ${panier.totalLigne}€.
+                </li>
 
-    `
-    
-    //⇓⇓ Ecrit les 'tr'  dans HTML ⇓⇓.
-    document.querySelector("tbody").appendChild(listePanier);
+            </li>
 
-})
+        `;
 
+  //⇓⇓ Ecrit les 'tr'  dans HTML ⇓⇓.
+  document.querySelector("tbody").appendChild(listePanier);
+});
 
-document.getElementById('montant_total').innerText = `Le total de votre commande est de: ${montantTotal}€`
+//⇓⇓ Ecrit le montant total de la commande dans le DOM⇓⇓.
+document.getElementById(
+  "montant_total"
+).innerText = `Le total de votre commande est de: ${montantTotal}€`;
+
+//*******************************************************************************************/
+//************************ Fin de la session du mardi 8 décembre ***************************/
+//*****************************************************************************************/
+
+//⇓⇓ Récupère la totalité du formulaire⇓⇓.
+const $commande_client = document.getElementById("commande_client");
+
+//⇓⇓ Récupère les champs du formulaire⇓⇓.
+const $firstName = document.getElementById("firstName");
+const $lastName = document.getElementById("lastName");
+const $address = document.getElementById("address");
+const $city = document.getElementById("city");
+const $email = document.getElementById("email");
+
+//⇓⇓ Ecoute l’événement « submit » sur le bouton du formulaire⇓⇓.
+$commande_client.addEventListener("submit", function (e) {
+  //⇓⇓ Bloc la propagation de l’évènement par défaut de submit⇓⇓.
+  e.preventDefault();
+
+  //⇓⇓ Récupère le contenu des champs du formulaire ⇓⇓.
+  const commandeClient = {
+    contact: {
+      firstName: $firstName.value,
+      lastName: $lastName.value,
+      address: $address.value,
+      city: $city.value,
+      email: $email.value,
+    },
+
+    products: [_ids],
+  };
+
+  console.log(commandeClient);
+
+  //⇓⇓ URL de la requête⇓⇓.
+  let url = "http://localhost:3000/api/teddies/order";
+
+  //⇓⇓ Paramètres de la requête⇓⇓.
+  const parametresDeRequete = {
+    method: "POST",
+    body: JSON.stringify(commandeClient),
+    headers: new Headers({
+      "Content-Type": "application/json; charset=UTF-8 ",
+    }),
+  };
+
+  //⇓⇓ la requête avec URL et Paramètres⇓⇓.
+  fetch(url, parametresDeRequete)
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      //alert(JSON.stringify(response));
+
+      let idCommande = response.orderId;
+
+      window.location.href = `/html/order.html?Id_Commande=${idCommande}&Montant_Commande=${montantTotal}`;
+    })
+
+    .catch((error) => alert("Erreur : " + error));
+});
